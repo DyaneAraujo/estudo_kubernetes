@@ -72,14 +72,14 @@ de nuvem, como o Google Cloud Platform.</p>
 <p>No Docker nós trabalhamos com container. E a partir de agora no Kubernetes nós vamos criar, produzir, manipular e gerir, não mais os containers 
 diretamente, e sim os nossos pods. Então o mundo kubernetes, pods, o mundo Docker e containers.</p>
 
-![Screen Shot 2023-08-02 at 6.15.41 PM.png](..%2FDesktop%2FScreen%20Shot%202023-08-02%20at%206.15.41%20PM.png)
+<img width="949" alt="Screen Shot 2023-07-25 at 6 17 39 PM" src="https://github.com/DyaneAraujo/estudo_kubernetes/assets/114944655/e2a92159-29cd-4dd8-9c14-ab3fbad2c6e0">
 
 <p>Um pod é um conjunto de um ou mais containers, então quando nós tivermos aqui a comunicação da nossa máquina com o kubectl para API, nós não vamos 
 pedir pela criação diretamente de um container, e sim de um pod, que pode conter um ou mais containers dentro dele.</p>
 <p>Isso sempre de maneira declarativa ou imperativa.</p>
 
-![Screen Shot 2023-07-25 at 6.18.57 PM.png](..%2FDesktop%2FScreen%20Shot%202023-07-25%20at%206.18.57%20PM.png)
-![Screen Shot 2023-07-25 at 6.19.18 PM.png](..%2FDesktop%2FScreen%20Shot%202023-07-25%20at%206.19.18%20PM.png)
+<img width="377" alt="Screen Shot 2023-07-25 at 6 18 57 PM" src="https://github.com/DyaneAraujo/estudo_kubernetes/assets/114944655/0c6a9576-8b32-4eb0-afc9-d4a23019d350">
+<img width="734" alt="Screen Shot 2023-07-25 at 6 19 18 PM" src="https://github.com/DyaneAraujo/estudo_kubernetes/assets/114944655/33e500de-094d-4ad3-95cd-341e692f7e67">
 
 <p>Dentro de um pod nós temos liberdade, para termos mais containers, mas sempre que nós criamos um pod ele ganha um endereço IP.</p>
 
@@ -89,18 +89,19 @@ portas para os IPs que são atribuídos a esse pod.</p>
 <p>No momento em que nós fazemos a requisição aqui, por exemplo, para o IP 10.0.0.1, repare que é o mesmo IP que nós estamos a fazer requisição 
 para o IP do pod na porta 8080. Nós estamos nos referindo nesse momento ao nosso container dentro da porta :8080 no nosso pod.</p>
 
-![Screen Shot 2023-07-25 at 6.20.29 PM.png](..%2FDesktop%2FScreen%20Shot%202023-07-25%20at%206.20.29%20PM.png)
+<img width="778" alt="Screen Shot 2023-07-25 at 6 20 29 PM" src="https://github.com/DyaneAraujo/estudo_kubernetes/assets/114944655/686622a8-4ff2-4b0a-8203-5523b4c48905">
 
 <p>Nós vimos que nós temos um container ou mais dentro de um pod. Caso esse container falhe, o que vai acontecer?</p>
 
 <p>Nesse momento, esse pod vai parar de funcionar. Ele morreu para sempre e o kubernetes tem total liberdade de criar um pod para substituir 
 o antigo, mas não necessariamente com o mesmo IP que ele tinha antes, nós não temos controle sobre isso.</p>
 
-![Screen Shot 2023-07-25 at 6.22.36 PM.png](..%2FDesktop%2FScreen%20Shot%202023-07-25%20at%206.22.36%20PM.png)
-![Screen Shot 2023-08-02 at 6.30.17 PM.png](..%2FDesktop%2FScreen%20Shot%202023-08-02%20at%206.30.17%20PM.png)
+<img width="378" alt="Screen Shot 2023-07-25 at 6 22 36 PM" src="https://github.com/DyaneAraujo/estudo_kubernetes/assets/114944655/dbd66a37-b7b1-43f7-93e8-413709b65e47">
 
 <p>Por quê? Porquê os pods são efémeros, eles estão ali para serem substituídos a qualquer momento e toda criação de um novo pod é um novo pod 
 efetivamente, não é o mesmo pod antigo renascido.</p>
+
+<img width="622" alt="Screen Shot 2023-08-02 at 6 30 17 PM" src="https://github.com/DyaneAraujo/estudo_kubernetes/assets/114944655/64488144-57b0-46ce-aab5-94d6bfa0a0c7">
 
 <p>E caso nós tivéssemos mais de um container no mesmo pod, o que iria acontecer se esse pod falhasse? Para ele falhar efetivamente nós 
 teríamos que ter a seguinte condição:</p>
@@ -108,12 +109,12 @@ teríamos que ter a seguinte condição:</p>
 <p>O primeiro container falhou dentro de um pod. Caso ainda tenha algum container em funcionamento sem nenhum problema dentro desse mesmo pod, 
 ele ainda está saudável; mas caso nenhum container mais esteja a funcionar dentro desse pod, esse pod foi finalizado e outro vai ser criado no lugar dele.</p>
 
-![Screen Shot 2023-07-25 at 6.22.52 PM.png](..%2FDesktop%2FScreen%20Shot%202023-07-25%20at%206.22.52%20PM.png)
+<img width="710" alt="Screen Shot 2023-07-25 at 6 22 52 PM" src="https://github.com/DyaneAraujo/estudo_kubernetes/assets/114944655/87a5873d-565c-4f64-a1a1-98b52ddafc80">
 
 <p>O IP pertence ao pod, e não aos containers. Isso quer dizer que no fim das contas, eles vão compartilhar os mesmos namespaces de rede e de processo, 
 de comunicação entre o processo e eles também podem compartilhar volume.</p>
 
-![Screen Shot 2023-07-25 at 6.24.22 PM.png](..%2FDesktop%2FScreen%20Shot%202023-07-25%20at%206.24.22%20PM.png)
+<img width="772" alt="Screen Shot 2023-07-25 at 6 24 22 PM" src="https://github.com/DyaneAraujo/estudo_kubernetes/assets/114944655/d7cb7f16-cb6f-4a0b-854b-68ed58758873">
 
 <p>Qual é a grande vantagem deles compartilharem o mesmo IP? A grande vantagem é que agora eles podem fazer essa comunicação diretamente entre eles 
 via localhost, porque eles têm o mesmo IP, sendo 10.0.0.1, nesse caso.</p>
@@ -122,7 +123,8 @@ via localhost, porque eles têm o mesmo IP, sendo 10.0.0.1, nesse caso.</p>
 nós também vamos ter total capacidade de comunicar pods entre diferentes IPs. Eu tenho um pod com IP 10.0.0.1, ele pode começar com pod de IP 10.0.0.2. 
 Por exemplo:</p>
 
-![Screen Shot 2023-07-25 at 6.24.45 PM.png](..%2FDesktop%2FScreen%20Shot%202023-07-25%20at%206.24.45%20PM.png)
+<img width="686" alt="Screen Shot 2023-07-25 at 6 24 45 PM" src="https://github.com/DyaneAraujo/estudo_kubernetes/assets/114944655/2badf158-8c4e-4edc-981b-01dc59409a95">
+
 
 ### Criando cluster
 
